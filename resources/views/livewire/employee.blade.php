@@ -26,24 +26,87 @@
 
     <div class="my-3 p-3 bg-body rounded shadow-sm">
         <form>
+            <br>
+            <center><h1>FORM PENGISIAN</h1></center>
+            <br><br>
+            {{-- NIK --}}
             <div class="mb-3 row">
-                <label for="nama" class="col-sm-2 col-form-label">Nama</label>
+                <label for="nik" class="col-sm-2 col-form-label">NIK</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" wire:model="nik" >
+                </div>
+            </div>
+            {{-- No KK --}}
+            <div class="mb-3 row">
+                <label for="nokk" class="col-sm-2 col-form-label">No KK</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" wire:model="nokk" >
+                </div>
+            </div>
+            {{-- nama --}}
+            <div class="mb-3 row">
+                <label for="nama" class="col-sm-2 col-form-label">Nama Lengkap (tanpa gelar)</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" wire:model="nama" >
                 </div>
             </div>
+            {{-- Gelar Kesarjanaan --}}
+            <div class="mb-3 row">
+                <label for="sarjana" class="col-sm-2 col-form-label">Gelar Kesarjanaan</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" wire:model="sarjana" >
+                </div>
+            </div>
+            {{-- Jenis Kelamin --}}
+            <div class="mb-3 row">
+                <label for="kelamin" class="col-sm-2 col-form-label">Jenis Kelamin</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" wire:model="kelamin" >
+                </div>
+            </div>
+            {{-- Tempat Lahir --}}
+            <div class="mb-3 row">
+                <label for="tempat" class="col-sm-2 col-form-label">Tempat Lahir</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" wire:model="tempat" >
+                </div>
+            </div>
+            {{-- Agama --}}
+            <div class="mb-3 row">
+                <label for="agama" class="col-sm-2 col-form-label">Agama</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" wire:model="agama" >
+                </div>
+            </div>
+            {{-- Status Perkawinan --}}
+            <div class="mb-3 row">
+                <label for="kawin" class="col-sm-2 col-form-label">Status Perkawinan</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" wire:model="kawin" >
+                </div>
+            </div>
+            {{-- Alamat Tinggal --}}
+            <div class="mb-3 row">
+                <label for="alamat" class="col-sm-2 col-form-label">Alamat Tempat Tinggal</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" wire:model="alamat" >
+                </div>
+            </div>  
+            {{-- No HP --}}
+            <div class="mb-3 row">
+                <label for="nohp" class="col-sm-2 col-form-label">No HP</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" class="form-control" wire:model="nohp" >
+                </div>
+            </div>                              
+            {{-- E-Mail --}}
             <div class="mb-3 row">
                 <label for="email" class="col-sm-2 col-form-label">Email</label>
                 <div class="col-sm-10">
                     <input type="email" class="form-control" wire:model="email" >
                 </div>
             </div>
-            <div class="mb-3 row">
-                <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" wire:model="alamat" >
-                </div>
-            </div>
+            {{-- Tombol Simpan --}}
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label"></label>
                 <div class="col-sm-10"><button type="button" class="btn btn-primary" name="submit" wire:click="store()">SIMPAN</button>
