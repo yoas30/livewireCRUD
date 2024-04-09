@@ -7,34 +7,36 @@ use Livewire\Component;
 
 class Employee extends Component
 {
-    public $nik, $nokk, $nama, $sarjana, $kelamin, $tempat, 
+    public $nik, $nokk, $nama, $sarjana, $kelamin, $tempatlahir, 
     $agama, $kawin, $alamat, $nohp, $email;
+
+    public $dataEmployees;
 
 
     public function store(){
-        $aturan = [
+        $aturan = 
+        [
                 'nik' => 'required',
                 'nokk' => 'required',
                 'nama' => 'required',
                 'sarjana' => 'required',
                 'kelamin' => 'required',
-                'tempat' => 'required',
+                'tempatlahir' => 'required',
                 'agama' => 'required',
                 'kawin' => 'required',
                 'alamat' => 'required',
                 'nohp' => 'required',
                 'email' => 'required|email',
-                
-
         ];
 
-        $pesan=[
+        $pesan=
+        [
             'nik.required' => 'NIK Wajib Diisi !',
             'nokk.required' => 'No KK Wajib Diisi !',
             'nama.required' => 'Nama Wajib Diisi !',
             'sarjana.required' => 'Sarjana Wajib Diisi !',
             'kelamin.required' => 'Kelamin Wajib Diisi !',
-            'tempat.required' => 'Tempat Wajib Diisi !',
+            'tempatlahir.required' => 'Tempat Lahir Wajib Diisi !',
             'agama.required' => 'Agama Wajib Diisi !',
             'kawin.required' => 'Status Perkawinan Wajib Diisi !',
             'alamat.required' => 'Alamat Wajib Diisi !',
@@ -50,6 +52,8 @@ class Employee extends Component
     }
     public function render()
     {
+        $this->dataEmployees=ModelsEmployee::orderBy('nama','asc')->get();
         return view('livewire.employee');
     }
 }
+

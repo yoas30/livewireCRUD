@@ -66,9 +66,9 @@
             </div>
             {{-- Tempat Lahir --}}
             <div class="mb-3 row">
-                <label for="tempat" class="col-sm-2 col-form-label">Tempat Lahir</label>
+                <label for="tempatlahir" class="col-sm-2 col-form-label">Tempat Lahir</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" wire:model="tempat" >
+                    <input type="text" class="form-control" wire:model="tempatlahir" >
                 </div>
             </div>
             {{-- Agama --}}
@@ -96,7 +96,7 @@
             <div class="mb-3 row">
                 <label for="nohp" class="col-sm-2 col-form-label">No HP</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" class="form-control" wire:model="nohp" >
+                    <input type="text" class="form-control" wire:model="nohp" >
                 </div>
             </div>                              
             {{-- E-Mail --}}
@@ -131,16 +131,20 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach ($dataEmployees as $key => $value)
+
                 <tr>
                     <td>1</td>
-                    <td>Muhammad</td>
-                    <td>muhammad@gmail.com</td>
-                    <td>Yogyakarta</td>
+                    <td>{{ $value->nama }}</td>
+                    <td>{{ $value->email }}</td>
+                    <td>{{ $value->alamat }}</td>
                     <td>
                         <a href="" class="btn btn-warning btn-sm">Edit</a>
                         <a href="" class="btn btn-danger btn-sm">Del</a>
                     </td>
-                </tr>
+                </tr>  
+
+                @endforeach
             </tbody>
         </table>
 
