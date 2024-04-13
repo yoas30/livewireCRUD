@@ -129,7 +129,10 @@
     <!-- START DATA -->
     
     <div class="my-3 p-3 bg-body rounded shadow-sm">
-        <h1>Data Pegawai</h1>
+        <h1>DATA PEGAWAI</h1>
+        <div class="pb-3 pt-3">
+            <input type="text" class="form-control mb-3 w-25" placeholder="Search.." wire:model.live="katakunci">
+        </div>
 
         {{ $dataEmployees->links() }}    
 
@@ -154,7 +157,8 @@
                     <td>
                         <a wire:click="edit({{ $value->id }})" class="btn btn-warning btn-sm">Edit</a>
                     {{-- Memanggil tampilan konfirmasi dibawah #exampleModal --}}                    
-                        <a class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">Del</a> 
+                        <a wire:click="delete_confirmation({{ $value->id }})" class="btn btn-danger btn-sm" 
+                            data-bs-toggle="modal" data-bs-target="#exampleModal">Del</a> 
                     </td>
                 </tr>  
 
@@ -179,7 +183,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">TIDAK</button>
-              <button wire:click="delete({{ $value->id }})" type="button" class="btn btn-primary" data-bs-dismiss="modal">YA</button>
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" wire:click="delete()">YA</button>
             </div>
           </div>
         </div>
