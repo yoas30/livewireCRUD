@@ -27,7 +27,7 @@
     <div class="my-3 p-3 bg-body rounded shadow-sm">
         <form>
             <br>
-            <center><h1>FORM PENGISIAN</h1></center>
+            <h1 style="align-content: center">FORM PENGISIAN</h1>
             <br><br>
             {{-- NIK --}}
             <div class="mb-3 row">
@@ -152,8 +152,9 @@
                     <td>{{ $value->email }}</td>
                     <td>{{ $value->alamat }}</td>
                     <td>
-                        <a wire:click='edit({{ $value->id }})' class="btn btn-warning btn-sm">Edit</a>
-                        <a href="" class="btn btn-danger btn-sm">Del</a>
+                        <a wire:click="edit({{ $value->id }})" class="btn btn-warning btn-sm">Edit</a>
+                    {{-- Memanggil tampilan konfirmasi dibawah #exampleModal --}}                    
+                        <a class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">Del</a> 
                     </td>
                 </tr>  
 
@@ -164,5 +165,24 @@
         {{ $dataEmployees->links() }}
 
     </div>
-    <!-- AKHIR DATA -->
+  
+
+    <div wire:ignore.self class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Konfirmasi Delete</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              Yakin akan menghapus data ini ?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">TIDAK</button>
+              <button wire:click="delete({{ $value->id }})" type="button" class="btn btn-primary" data-bs-dismiss="modal">YA</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  <!-- AKHIR DATA -->
 </div>

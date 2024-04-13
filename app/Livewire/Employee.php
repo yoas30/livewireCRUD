@@ -57,6 +57,8 @@ class Employee extends Component
 
         session()->flash('pesanberhasil','Data berhasil dimasukkan');
 
+        $this->clear();
+
     }
 
     public function edit($id){
@@ -70,7 +72,7 @@ class Employee extends Component
         $this->updateData = true; //Ubah Booelan False jadi True
         $this->employee_id = $id;
         
-        $this->clear();
+        
     }
 
     public function update(){
@@ -130,6 +132,17 @@ class Employee extends Component
 
         $this->updateData = false; //Ubah Booelan True jadi False
         $this->employee_id = '';
+    }
+
+    public function delete(){
+            $id = $this->employee_id;
+            ModelsEmployee::find($id)->delete();
+            session()->flash('pesanberhasil','Data berhasil di Hapus');
+            $this->clear();        
+    }
+
+    public function delete_confirmation($id){
+        $this->employee_id = $id;
     }
 
     public function render()
