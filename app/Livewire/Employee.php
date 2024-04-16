@@ -18,6 +18,9 @@ class Employee extends Component
     public $employee_id;
 
     public $katakunci;
+    public $employee_selected_id = [];
+    public $sortColumn = 'nama';
+    public $sortDirection = 'asc';
 
 
 
@@ -134,17 +137,35 @@ class Employee extends Component
 
         $this->updateData = false; //Ubah Booelan True jadi False
         $this->employee_id = '';
+        $this->employee_selected_id = [];
     }
 
-    public function delete(){
+    public function delete()
+    {
+        if($this->employee_id != ''){
             $id = $this->employee_id;
             ModelsEmployee::find($id)->delete();
+        }
+        if(count($this->employee_selected_id)){
+            for ($x = 0; $x < count($this->employee_selected_id); $x++){
+                ModelsEmployee::find($this->employee_selected_id[$x])->delete();
+            }
+        }
             session()->flash('pesanberhasil','Data berhasil di Hapus');
             $this->clear();        
     }
 
-    public function delete_confirmation($id){
-        $this->employee_id = $id;
+    public function delete_confirmation($id)
+    {
+        if( $id != ''){
+            $this->employee_id = $id;
+        } 
+    }
+
+    public function sort($columnName)
+    {
+        $this->sortColumn = $columnName;
+        $this->sortDirection = $this->sortDirection == 'asc' ? 'desc' : 'asc'; //Jika asc maka desc, dan jika desc maka asc
     }
 
     public function render()
@@ -153,9 +174,9 @@ class Employee extends Component
             $data=ModelsEmployee::where('nama','like','%'.$this->katakunci.'%')
             ->orWhere('email','like','%'.$this->katakunci.'%')
             ->orWhere('alamat','like','%'.$this->katakunci.'%')
-            ->orderBy('nama','asc')->paginate(2);
+            ->orderBy( $this->sortColumn, $this->sortDirection)->paginate(2);
         }else{
-            $data=ModelsEmployee::orderBy('nama','asc')->paginate(2); ///////////////////////
+            $data=ModelsEmployee::orderBy($this->sortColumn, $this->sortDirection)->paginate(2); ///////////////////////
         }
     
         return view('livewire.employee',['dataEmployees'=>$data]);
